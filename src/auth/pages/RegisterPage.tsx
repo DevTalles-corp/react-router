@@ -1,15 +1,13 @@
-import { Link } from 'react-router';
-
 import { cn } from '@/lib/utils';
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 import placeholderImage from '@/assets/placeholder.svg';
+import { Link } from 'react-router';
 
-export function LoginPage({
+export function RegisterPage({
   className,
   ...props
 }: React.ComponentProps<'div'>) {
@@ -20,10 +18,19 @@ export function LoginPage({
           <form className="p-6 md:p-8">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Welcome back</h1>
+                <h1 className="text-2xl font-bold">Create an account</h1>
                 <p className="text-balance text-muted-foreground">
-                  Login to your Acme Inc account
+                  Create an account to get started
                 </p>
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="fullName">Full Name</Label>
+                <Input
+                  id="fullName"
+                  type="text"
+                  placeholder="John Doe"
+                  required
+                />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -84,12 +91,9 @@ export function LoginPage({
                 </Button>
               </div>
               <div className="text-center text-sm">
-                Don&apos;t have an account?{' '}
-                <Link
-                  to="/auth/register"
-                  className="underline underline-offset-4"
-                >
-                  Sign up
+                Already have an account?{' '}
+                <Link to="/auth/login" className="underline underline-offset-4">
+                  Login
                 </Link>
               </div>
             </div>
