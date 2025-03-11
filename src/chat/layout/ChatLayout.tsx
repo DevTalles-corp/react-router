@@ -4,9 +4,7 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 import { ContactList } from '../components/ContactList';
-import { ContactInfo } from '../components/ContactInfo';
-import { NoContactSelected } from '../components/NoContactSelected';
-import { ContactInfoSkeleton } from '../components/ContactInfoSkeleton';
+import { ContactDetails } from '../components/contact-details/ContactDetails';
 
 export default function ChatLayout() {
   return (
@@ -47,8 +45,10 @@ export default function ChatLayout() {
           <div className="h-14 border-b px-4 flex items-center">
             <h2 className="font-medium">Contact details</h2>
           </div>
+
+          <ContactDetails />
           {/* <ContactInfo /> */}
-          <NoContactSelected />
+          {/* <NoContactSelected /> */}
           {/* <ContactInfoSkeleton /> */}
         </div>
       </div>
