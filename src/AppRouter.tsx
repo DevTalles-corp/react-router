@@ -1,7 +1,19 @@
+import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
+
 import { AuthLayout } from './auth/layout/AuthLayout';
 import { LoginPage } from './auth/pages/LoginPage';
 import { RegisterPage } from './auth/pages/RegisterPage';
+
+import { sleep } from './lib/sleep';
+
+// import ChatLayout from './chat/layout/ChatLayout';
+const ChatLayout = lazy(async () => {
+  await sleep(1500);
+  return import('./chat/layout/ChatLayout');
+});
+
+import ChatPage from './chat/pages/ChatPage';
 
 export const AppRouter = () => {
   return (
@@ -12,6 +24,24 @@ export const AppRouter = () => {
           <Route path="/auth/register" element={<RegisterPage />} />
           {/* <Route path="login" element={<Login />} /> */}
           {/* <Route path="/auth" element={<Navigate to="/auth/login" />} /> */}
+        </Route>
+
+        {/* /chat */}
+        <Route
+          path="/chat"
+          element={
+            <Suspense
+              fallback={
+                <div className="flex h-screen w-full items-center justify-center bg-background">
+                  <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+                </div>
+              }
+            >
+              <ChatLayout />
+            </Suspense>
+          }
+        >
+          <Route index element={<ChatPage />} />
         </Route>
 
         <Route path="/" element={<Navigate to="/auth" />} />
