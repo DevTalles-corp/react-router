@@ -8,12 +8,12 @@ import { RegisterPage } from './auth/pages/RegisterPage';
 import { sleep } from './lib/sleep';
 
 // import ChatLayout from './chat/layout/ChatLayout';
+// import ChatPage from './chat/pages/ChatPage';
 const ChatLayout = lazy(async () => {
   await sleep(1500);
   return import('./chat/layout/ChatLayout');
 });
-
-import ChatPage from './chat/pages/ChatPage';
+const ChatPage = lazy(async () => import('./chat/pages/ChatPage'));
 
 export const AppRouter = () => {
   return (
