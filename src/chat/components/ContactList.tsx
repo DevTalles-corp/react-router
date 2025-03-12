@@ -16,7 +16,7 @@ export const ContactList = () => {
   });
 
   return (
-    <ScrollArea className="h-[calc(100vh-64px)]">
+    <ScrollArea className="h-[calc(100vh-120px)]">
       <div className="space-y-4 p-4">
         <div className="space-y-1">
           <h3 className="px-2 text-sm font-semibold">Contacts</h3>
