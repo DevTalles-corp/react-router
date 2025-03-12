@@ -6,6 +6,7 @@ import { LoginPage } from './auth/pages/LoginPage';
 import { RegisterPage } from './auth/pages/RegisterPage';
 
 import { sleep } from './lib/sleep';
+import { PrivateRoute } from './auth/components/PrivateRoute';
 
 // import ChatLayout from './chat/layout/ChatLayout';
 // import ChatPage from './chat/pages/ChatPage';
@@ -40,7 +41,9 @@ export const AppRouter = () => {
                 </div>
               }
             >
-              <ChatLayout />
+              <PrivateRoute isAuthenticated={false}>
+                <ChatLayout />
+              </PrivateRoute>
             </Suspense>
           }
         >
